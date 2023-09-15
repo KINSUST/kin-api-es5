@@ -1,10 +1,7 @@
-
-
 const createError = require("http-errors");
 const jwt = require("jsonwebtoken");
 
 const createJWT = (payload, secretKey, expiresIn) => {
-    
   // payload check
   if (typeof payload !== "object" || !payload) {
     throw createError(404, "Payload must be a non-empty object.");

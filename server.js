@@ -5,10 +5,10 @@ const cors = require("cors");
 const createError = require("http-errors");
 const cookieParser = require("cookie-parser");
 const corsOptions = require("./config/corsSetup.js");
-const {  port } = require("./secret.js");
+const { port } = require("./secret.js");
 const errorHandler = require("./middlewares/errorHandler.js");
 const connectDB = require("./config/db.js");
-const userRouter = require("./routes/user.route.js"); 
+const userRouter = require("./routes/user.route.js");
 const authRouter = require("./routes/auth.route.js");
 const ecRouter = require("./routes/ec.route.js");
 const programRouter = require("./routes/program.route.js");
@@ -16,7 +16,10 @@ const subscriberRouter = require("./routes/subscriber.route.js");
 const advisorRouter = require("./routes/advisors.route.js");
 const imagesRouter = require("./routes/images.route.js");
 const postRouter = require("./routes/post.route.js");
-const { successResponse, errorResponse } = require("./services/responseHandler.js");
+const {
+  successResponse,
+  errorResponse,
+} = require("./services/responseHandler.js");
 
 const sliderRouter = require("./routes/slider.route.js");
 const orgRouter = require("./routes/org.route.js");
@@ -44,13 +47,13 @@ app.use("/api/v1/ec", ecRouter);
 app.use("/api/v1/programs", programRouter);
 app.use("/api/v1/subscribers", subscriberRouter);
 app.use("/api/v1/advisors", advisorRouter);
-app.use('/api/v1/sliders',sliderRouter)
+app.use("/api/v1/sliders", sliderRouter);
 // images routes
 app.use("/api/v1/images", imagesRouter);
 //post routes
 app.use("/api/v1/posts", postRouter);
 // org
-app.use("/api/v1/org-members",orgRouter);
+app.use("/api/v1/org-members", orgRouter);
 
 // invalid route handler
 app.get("/", (req, res) => {
@@ -59,10 +62,10 @@ app.get("/", (req, res) => {
     statusCode: 200,
     message: "Welcome to the API",
   });
-}); 
+});
 
 // invalid route handler
-app.use((req, res, next) => { 
+app.use((req, res, next) => {
   next(createError(404, "Invalid route"));
 });
 
@@ -77,10 +80,7 @@ app.listen(PORT, () => {
   );
 });
 
-// unhandled promise rejection error handler 
-process.on("unhandledRejection", async(error,promise) => {
+// unhandled promise rejection error handler
+process.on("unhandledRejection", async (error, promise) => {
   console.log(error.name);
-
-});  
-
- 
+});
